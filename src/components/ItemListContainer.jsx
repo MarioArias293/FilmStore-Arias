@@ -1,6 +1,11 @@
+import ItemCount from "./ItemCount";
+
+const onAddHandler = (num) =>  {alert(`Añadiste ${num} productos al carrito`)}
 const ItemListContainer = () => (
     <>
-    <h1>Este es un contenedor "vacio"</h1>
+   
+    <ItemCount stock={6} onAdd={onAddHandler} />
+
     </>
 )
 
