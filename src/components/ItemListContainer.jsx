@@ -1,12 +1,13 @@
-import ItemCount from "./ItemCount";
+import ItemList from "./ItemList";
+import { Row, Container } from "react-bootstrap";
 
-const onAddHandler = (num) =>  {alert(`Añadiste ${num} productos al carrito`)}
-const ItemListContainer = () => (
-    <>
-   
-    <ItemCount stock={6} onAdd={onAddHandler} />
+const ItemListContainer = ({products}) => (
+    <Container>
+            <Row xs={2} md={4} className="g-4 mt-1">
+                <ItemList products={products} />
+            </Row>
+        </Container>
 
-    </>
 )
 
 export default ItemListContainer;
