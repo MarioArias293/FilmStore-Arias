@@ -3,7 +3,7 @@ import ItemCount from "./ItemCount";
 const onAddHandler = (num) =>  {alert(`Añadiste ${num} productos al carrito`)}
 
 const Item = ({item})  => {
-    const {id, title, price, pictureUrl} = item;
+    const {id, title, price, pictureUrl, stock} = item;
     return(
     <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src={pictureUrl} />
@@ -12,7 +12,7 @@ const Item = ({item})  => {
             <Card.Text>Precio: {price}</Card.Text>
             <Card.Text> Id: {id}</Card.Text>
             <Button> Detalles </Button>
-            <ItemCount stock={6} onAdd={onAddHandler} initial={1} />
+            <ItemCount stock={stock} onAdd={onAddHandler} initial={1} />
             
         </Card.Body>
 
