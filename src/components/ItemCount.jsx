@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, ButtonGroup, Container, Row, Col } from "react-bootstrap";
+
 const ItemCount = ({ stock, initial = 1, onAdd }) => {
     const [count, setCount] = useState(initial);
     const add = () => { if (count < stock) { setCount(count + 1) } }

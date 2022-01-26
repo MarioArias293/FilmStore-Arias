@@ -1,24 +1,34 @@
 import ItemList from "./ItemList";
 import { Row, Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { getMockedItems } from "../resources/productMock";
-
+import { getMockedItemsByCat } from "../resources/productMock";
+import { useParams } from "react-router-dom";
+import Loading from "./Loading";
 
 
 
 const ItemListContainer = () => {
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([]);
+    const {id} = useParams();
+    const [loading, setLoading] = useState()
+    
     useEffect(() => {
-        getMockedItems().then((mocked) => {
+        setLoading(true)
+        getMockedItemsByCat(id).then((mocked) => {
             setProducts(mocked)
+            setLoading(false)
+            
         })
 
-    }, [])
+    }, [id])
+
     return (
+        
         <Container>
-            <Row xs={2} md={4} className="g-4 mt-1">
-                <ItemList products={products} />
-            </Row>
+            {loading ? <Loading/> : <Row xs={1} md={2} lg={4}  className="g-4 mt-1 mb-1" >
+                <ItemList className="justify-content-center" products={products} />
+            </Row> }    
+            
 
         </Container>
 

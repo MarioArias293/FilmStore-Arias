@@ -1,24 +1,30 @@
-
+import React from 'react';
 import './App.css';
-import NavBar from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ItemListContainer from './components/ItemListContainer';
-import { useEffect, useState } from 'react';
-import {getMockedItems, getMockedItem} from './resources/productMock';
-import ItemDetail from './components/ItemDetail';
 import ItemDetailContainer from './components/ItemDetailContainer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import NoPage from './components/NoPage';
+import Layout from './components/Layout';
+import ItemListContainer from './components/ItemListContainer';
 
 
 
 function App() {
-  
+
   return (
-    <div className="App">
-      <NavBar />      
-      {/* <ItemListContainer /> */}
-      <ItemDetailContainer/>
-      
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />} >
+          <Route index element={<Home />} />;
+          <Route path="/category/:id" element={<ItemListContainer/>}/>
+          <Route path="/item/:id" element={<ItemDetailContainer/>}/>          
+          <Route path="*"  element={<NoPage />} />;
+        </Route>
+
+      </Routes> 
+
+    </BrowserRouter>
   );
 }
 

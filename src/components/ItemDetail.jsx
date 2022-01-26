@@ -1,11 +1,10 @@
-import { Card, Badge, Row, Container, Col } from "react-bootstrap"
-import CardHeader from "react-bootstrap/esm/CardHeader";
+import { Badge, Row, Container, Col } from "react-bootstrap"
 import ControlledCarousel from "./Carousell";
 import ItemCount from "./ItemCount";
 
-
+const onAdd = (i) => {alert(`Has agregado ${i} productos a la canasta`)} 
 const ItemDetail = ({ item }) => {
-    const { id, title, price, description, stock, urls } = item
+    const { title, price, description, stock, urls } = item
 
 
     return <>
@@ -27,15 +26,15 @@ const ItemDetail = ({ item }) => {
                             </Badge></Col>
                             </Row>
                         </Container>
-
-                        <h3>$ {price} </h3>
-
+                        <hr/>
+                        <h3>$ {Intl.NumberFormat('en-US').format(price)}  </h3>
+                        <hr/>
                         <p>{description}</p>
-
+                    
                     </div>
 
 
-                    <ItemCount stock={stock} />
+                    <ItemCount stock={stock} initial={1} onAdd={onAdd} />
                 </Col>
             </Row>
         </Container>
