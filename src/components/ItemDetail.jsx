@@ -1,10 +1,19 @@
-import { Badge, Row, Container, Col } from "react-bootstrap"
+import { Badge, Row, Container, Col, Button } from "react-bootstrap"
 import ControlledCarousel from "./Carousell";
 import ItemCount from "./ItemCount";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
-const onAdd = (i) => {alert(`Has agregado ${i} productos a la canasta`)} 
+
+
+
 const ItemDetail = ({ item }) => {
     const { title, price, description, stock, urls } = item
+    const [ showButtons, setShowButtons ] = useState(false);
+    const onAdd = (i) => {
+        alert(`Has agregado ${i} de ${title} a la canasta`)
+        setShowButtons(true)        
+    };
 
 
     return <>
@@ -19,22 +28,38 @@ const ItemDetail = ({ item }) => {
 
                     <div className="text-start">
                         <Container className="ps-0 d-flex align-items-end">
-                            <Row> 
+                            <Row>
                                 <Col><h2 >{title} </h2> </Col>
-                            <Col lg={{ span:2 }}><Badge pill bg="secondary">
-                                Disponibles: {stock}
-                            </Badge></Col>
+                                <Col lg={{ span: 2 }}><Badge pill bg="secondary">
+                                    Disponibles: {stock}
+                                </Badge></Col>
                             </Row>
                         </Container>
-                        <hr/>
+                        <hr />
                         <h3>$ {Intl.NumberFormat('en-US').format(price)}  </h3>
-                        <hr/>
+                        <hr />
                         <p>{description}</p>
-                    
+
                     </div>
+                    <ItemCount stock={stock} initial={0} onAdd={onAdd} />
+
+                    {showButtons ? (         
+                        <Container className="ps-0  text-end"  >
+                        <hr/>
+                        <Link to={"/"}>
+                            <Button variant="secondary">Volver al inicio</Button> 
+                        </Link>
+                        {' '}
+                        <Link to={"/cart"}>
+                            <Button >Finalizar compra</Button>
+                        </Link>
+                    </Container>
+                    ) : (
+                        null
+                    )}
 
 
-                    <ItemCount stock={stock} initial={1} onAdd={onAdd} />
+                    
                 </Col>
             </Row>
         </Container>

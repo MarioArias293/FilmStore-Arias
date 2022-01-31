@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import NavBar from "./NavBar";
-import Loading from "./Loading";
+import { CartContext, CartProvider } from '../context/CartContext';
 
 const Layout = () => {
 
-    
-    return(
+
+    return (
         <div className="App">
-            <NavBar/>
-            <Outlet />
-            
+            <CartProvider>
+                <NavBar />
+                <Outlet />
+            </CartProvider>
 
         </div>
     )

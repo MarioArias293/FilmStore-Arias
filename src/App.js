@@ -7,7 +7,7 @@ import Home from './components/Home';
 import NoPage from './components/NoPage';
 import Layout from './components/Layout';
 import ItemListContainer from './components/ItemListContainer';
-
+import Cart from './components/Cart';
 
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
           <Route path="/category/:id" element={<ItemListContainer/>}/>
           <Route path="/item/:id" element={<ItemDetailContainer/>}/>          
           <Route path="*"  element={<NoPage />} />;
+          <Route path="/cart" element={<Cart/>}/>;
         </Route>
 
       </Routes> 

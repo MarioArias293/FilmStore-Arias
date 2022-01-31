@@ -18,7 +18,7 @@ const Loading = () => {
                     height={250}
                     width={250}
                     isStopped={false}
-                    isPaused={true}/>
+                    isPaused={false}/>
         </div>
     )
 }
