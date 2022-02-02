@@ -18,7 +18,7 @@ const NavBar = () => {
                     <Nav className="me-auto">
                         {categories.map((category) => (<NavLink key={category.name} to={`/category/${category.name}`} activeClassName="active" className="nav-link">{category.text}</NavLink>))}
                     </Nav>
-                    <Button variant="outline-light"><CartWidget />  <span id="cartpill" className="badge">1</span></Button>
+                    <CartWidget /> 
                 </Navbar.Collapse>
 
 

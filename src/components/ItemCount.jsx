@@ -5,7 +5,7 @@ const ItemCount = ({ stock, initial = 1, onAdd }) => {
     const [count, setCount] = useState(initial);
     const add = () => { if (count < stock) { setCount(count + 1) } }
     const sus = () => { if (count > 0) { setCount(count - 1) } };
-    const addToCartHandler = (count) => { if (count > initial) onAdd(count) }
+    const addToCartHandler = (count) => { if (count >= initial) onAdd(count) }
 
 
     return (

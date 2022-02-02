@@ -2,17 +2,20 @@ import { Badge, Row, Container, Col, Button } from "react-bootstrap"
 import ControlledCarousel from "./Carousell";
 import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../context/CartContext"
 
 
 
 
 const ItemDetail = ({ item }) => {
+    const { addItem } = useContext(CartContext);
     const { title, price, description, stock, urls } = item
     const [ showButtons, setShowButtons ] = useState(false);
     const onAdd = (i) => {
-        alert(`Has agregado ${i} de ${title} a la canasta`)
-        setShowButtons(true)        
+        setShowButtons(true)
+        addItem(item, i)
+
     };
 
 
@@ -41,7 +44,7 @@ const ItemDetail = ({ item }) => {
                         <p>{description}</p>
 
                     </div>
-                    <ItemCount stock={stock} initial={0} onAdd={onAdd} />
+                    <ItemCount stock={stock} initial={1} onAdd={onAdd} />
 
                     {showButtons ? (         
                         <Container className="ps-0  text-end"  >
