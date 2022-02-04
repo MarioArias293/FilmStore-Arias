@@ -1,15 +1,18 @@
+import { Container } from "react-bootstrap";
 import ItemListContainer from "./ItemListContainer";
 import Welcome from "./Welcome";
 
 
-const Home = () =>(
+const Home = () => (
 
-<div className="App">  
+  <div className="App" >
+    <Container className=" "  >
 
-<Welcome/>
-      <ItemListContainer />
-      
-    </div>
+    <Welcome />
+    <ItemListContainer />
+    </Container>
+
+  </div>
 
 )
 

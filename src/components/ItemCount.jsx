@@ -20,7 +20,7 @@ const ItemCount = ({ stock, initial = 1, onAdd }) => {
                     </ButtonGroup>
                 </Col>
                 <Col className="justify-content-end">
-                <button type="button" class="btn btn-primary " onClick={() => addToCartHandler(count)} >Agregar al carrito</button>
+                <button type="button" class="btn" variant="light" style={{ backgroundColor: "#ffa600" }} onClick={() => addToCartHandler(count)} >Agregar al carrito</button>
                 </Col>
             </Row>
 

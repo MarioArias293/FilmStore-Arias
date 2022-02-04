@@ -19,7 +19,7 @@ const Item = ({ item }) => {
                 <Card.Body>
                     <Card.Title>{title} </Card.Title>
                     <Card.Text> Precio: {peso.format(price)} </Card.Text>
-                    <Link to={`/item/${id}`}><Button variant="secondary"> Detalles </Button></Link>
+                    <Link to={`/item/${id}`}><Button variant="secondary"    > Detalles </Button></Link>
                 </Card.Body>
             </ListGroup>
 

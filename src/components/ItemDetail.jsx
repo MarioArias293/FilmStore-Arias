@@ -33,7 +33,7 @@ const ItemDetail = ({ item }) => {
                         <Container className="ps-0 d-flex align-items-end">
                             <Row>
                                 <Col><h2 >{title} </h2> </Col>
-                                <Col lg={{ span: 2 }}><Badge pill bg="secondary">
+                                <Col   lg={{ span: 2 }}><Badge  pill bg="secondary">
                                     Disponibles: {stock}
                                 </Badge></Col>
                             </Row>
@@ -50,11 +50,11 @@ const ItemDetail = ({ item }) => {
                         <Container className="ps-0  text-end"  >
                         <hr/>
                         <Link to={"/"}>
-                            <Button variant="secondary">Volver al inicio</Button> 
+                            <Button variant="secondary" >Volver al inicio</Button> 
                         </Link>
                         {' '}
                         <Link to={"/cart"}>
-                            <Button >Finalizar compra</Button>
+                            <Button variant="light" style={{ backgroundColor: "#ffa600" }} >Finalizar compra</Button>
                         </Link>
                     </Container>
                     ) : (

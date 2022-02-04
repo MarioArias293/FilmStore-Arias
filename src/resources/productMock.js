@@ -50,7 +50,7 @@ const itemsDetailMock = [{
   id: '2',
   title: 'Fujicolor C200',
   price: 35000,
-  urls: ["https://cdn.shopify.com/s/files/1/0094/5058/6197/products/FUJIFILMC20035mmColorFilm_0d49e00c-1d27-4d9c-93b4-9a6abc3185ff_1000x.png?v=1615312402",
+  urls: ["https://ae01.alicdn.com/kf/Hf8575392410649dea24fd524a2d89f0e7.jpg?width=800&height=800&hash=1600",
     "https://cdn.shopify.com/s/files/1/0348/9657/6652/products/Fujicolor_600x600.jpg?v=1610044741",
     "https://cdn.shopify.com/s/files/1/0348/9657/6652/products/Fujicolor_600x600.jpg?v=1610044741",],
   stock: 10,
@@ -199,19 +199,19 @@ const itemsDetailMock = [{
 }]
 
 export const getMockedItem = async (id) => {
-  await new Promise(resolve => setTimeout(resolve, 2000))
+  await new Promise(resolve => setTimeout(resolve, 1000))
   const foundItem = itemsDetailMock.find(item => item.id === id);
   return foundItem || noItem
 }
 
 export const getMockedItems2 = async () => {
-  await new Promise(resolve => setTimeout(resolve, 2000))
+  await new Promise(resolve => setTimeout(resolve, 1000))
   return itemsDetailMock;
 
 }
 
 export const getMockedItemsByCat = async (cat) => {
-  await new Promise(resolve => setTimeout(resolve, 2000))
+  await new Promise(resolve => setTimeout(resolve, 1000))
   return cat ? itemsDetailMock.filter(item => item.category === cat) : itemsDetailMock;
 
 }
