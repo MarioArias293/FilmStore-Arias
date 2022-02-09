@@ -11,8 +11,7 @@ export const CartProvider = ({ children }) => {
     }
 
     const isInCart = (itemId) => {
-
-        return cartItems.find(i => i.item.id === itemId);
+            return cartItems.find(i => i.item.id === itemId)
     }
 
     const addItem = (item, qty) => {
@@ -22,8 +21,8 @@ export const CartProvider = ({ children }) => {
                     return { ...cartItem, qty: qty + cartItem.qty}
                 }
                 if (cartItem.item.id === item.id && cartItem.item.stock < ( qty + cartItem.qty)) {
-                    return alert("No hay stock suficiente"),
-                    cartItem
+                    return alert("No hay stock suficiente"), cartItem
+                    
 
                 } else return cartItem
             }))

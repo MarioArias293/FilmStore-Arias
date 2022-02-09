@@ -1,7 +1,7 @@
 import ItemList from "./ItemList";
 import { Row, Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { getMockedItemsByCat } from "../resources/productMock";
+import { getItemsByCat } from "../resources/firebase";
 import { useParams } from "react-router-dom";
 import Loading from "./Loading";
 
@@ -14,8 +14,8 @@ const ItemListContainer = () => {
     
     useEffect(() => {
         setLoading(true)
-        getMockedItemsByCat(id).then((mocked) => {
-            setProducts(mocked)
+        getItemsByCat(id).then((items) => {
+            setProducts(items)
             setLoading(false)
             
         })

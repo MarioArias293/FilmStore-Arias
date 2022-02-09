@@ -1,9 +1,19 @@
-import React from "react";
+import React  from "react";
 import CartWidget from "./CartWidget";
 import { Link, NavLink } from "react-router-dom";
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
-import { categories } from "../resources/productMock";
+import { Navbar, Container, Nav } from "react-bootstrap";
+import { getCategories } from "../resources/firebase";
+import { useEffect, useState } from "react";
 const NavBar = () => {
+    
+    const [categories, setCategories] = useState([])
+    
+    useEffect(() => {
+        getCategories().then((cat) => {
+        setCategories(cat)
+        })
+        
+    }, [])
     
     return (
         <Navbar bg="dark" variant="dark" expand="lg" sticky="top" w>
