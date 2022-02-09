@@ -8,6 +8,7 @@ import NoPage from './components/NoPage';
 import Layout from './components/Layout';
 import ItemListContainer from './components/ItemListContainer';
 import Cart from './components/Cart';
+import OrderCompleted from './components/orderCompleted';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/item/:id" element={<ItemDetailContainer/>}/>          
           <Route path="*"  element={<NoPage />} />;
           <Route path="/cart" element={<Cart/>}/>;
+          <Route path="/orderCompleted/:id" element={<OrderCompleted/>}/>;
         </Route>
 
       </Routes> 

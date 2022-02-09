@@ -1,20 +1,60 @@
-import { Col, Row, Button, Figure, Container, ButtonGroup,  FormControl } from "react-bootstrap";
+import { Col, Row, Button, Figure, Container, ButtonGroup, Form } from "react-bootstrap";
 import { CartContext } from "../context/CartContext";
-import { useContext } from "react";
+import { useContext,  } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import EmptyCart from "./EmptyCart";
+import { addDoc, collection, } from "firebase/firestore";
+import { db } from "../resources/firebase";
 
 
 const Cart = () => {
-    const { getCartItemsSize, items, removeItem, clearAll, getTotalPrice, getTotalItems, addItem } = useContext(CartContext)
+
+    const { getCartItemsSize, items, removeItem, clearAll, getTotalPrice, getTotalItems, addItem, setId, } = useContext(CartContext)
     const navigate = useNavigate();
+
+    const itemsToBuy = items.map(product => {
+        return {
+            id: product.item.id,
+            title: product.item.title,
+            price: product.item.price,
+            qty: product.qty
+        }
+    })
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const buyer = {
+            name: event.target.elements.name.value,
+            phone: event.target.elements.num.value,
+            email: event.target.elements.mail.value,
+        };
+        const order = { buyer: buyer, items: itemsToBuy, date: new Date().toISOString(), total: getTotalPrice() };
+        console.log(order)
+        addDoc(collection(db, "orders"), order)
+            .then(doc => {
+                console.log("se creo con el id", doc.id)
+                setId(doc.id);
+                clearAll()
+                navigate(`/orderCompleted/${doc.id}`)
+
+            })
+            .catch(e => {
+                console.log("error", e)
+            })
+        addDoc()
+
+
+
+
+    }
+
 
 
     return (
 
         <>
             {getCartItemsSize() ?
-                <Container className=" border rounded mt-4 " style={{boxShadow: "0 13px 27px -5px rgba(92, 93, 50, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03)"}} >
+                <Container className=" border rounded mt-4 " style={{ boxShadow: "0 13px 27px -5px rgba(92, 93, 50, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03)" }} >
                     <Row className="justify-content-md-center g-4 ">
                         <Col className="border-end">
                             <div style={{ fontSize: "2.5rem" }} className="mt-2">Carrito de compras</div>
@@ -78,24 +118,35 @@ const Cart = () => {
 
                                 </div>
 
-                                <FormControl
-                                    style={{ width: "80%" }}
-                                    className="mt-2"
-                                    placeholder="Ingresa tu codigo de descuento"
-                                    aria-label="Codigo de descuento"
-                                />
-                                <div className="mt-2"> Total de productos: {getTotalItems()} </div>
-                                <div className="mt-4" style={{ fontSize: "1.4rem" }}> Total $ {Intl.NumberFormat('en-US').format(getTotalPrice())} </div>
-                                <Button variant="light" style={{ backgroundColor: "#ffa600", width: "80%" }} className="mb-4 mt-2" > Ir a pagar </Button>
+                                <Form onSubmit={handleSubmit} style={{ width: "80%" }}>
+                                    <Form.Group className="mb-1 "  >
+                                        <Form.Label>Tu nombre</Form.Label>
+                                        <Form.Control id="name" type="text" placeholder="Nombre" required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-1" >
+                                        <Form.Label>Email </Form.Label>
+                                        <Form.Control id="mail" type="email" placeholder="example@mail.com" required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-1" >
+                                        <Form.Label>Teléfono</Form.Label>
+                                        <Form.Control id="num" type="tel" placeholder="Teléfono" required />
+                                    </Form.Group>
+
+
+                                    <div className="mt-2"> Total de productos: {getTotalItems()} </div>
+                                    <div className="mt-4" style={{ fontSize: "1.4rem" }}> Total $ {Intl.NumberFormat('en-US').format(getTotalPrice())} </div>
+
+                                    <Button type="submit" variant="light" style={{ backgroundColor: "#ffa600", width: "80%" }} className="mb-4 mt-2"  > Ir a pagar </Button>
+
+
+                                </Form>
                             </Col>
 
+
                         </Col>
-
-
                     </Row>
                 </Container>
-
-                : <EmptyCart/>}
+                : <EmptyCart />}
 
 
 

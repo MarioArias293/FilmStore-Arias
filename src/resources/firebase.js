@@ -2,11 +2,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs, getDoc, doc, query, where } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyAtRwoacCFuynD9C53lQPnVHZFIIh4Eg7g",
     authDomain: "filmstore-arias.firebaseapp.com",
@@ -17,7 +12,6 @@ const firebaseConfig = {
     measurementId: "G-YXR5DC8DGL"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
@@ -35,7 +29,7 @@ const mapItem = (doc) => {
 }
 
 const mapCat = (doc) => {
-    return {...doc.data()}
+    return { ...doc.data() }
 }
 
 export const getItemsByCat = async (cat) => {
@@ -54,14 +48,16 @@ export const getItem = async (id) => {
     const docRef = doc(db, "items", `${id}`)
     const docSnapshot = await getDoc(docRef)
     if (docSnapshot.data()) {
-         return mapItem(docSnapshot) } else { return noItem }
+        return mapItem(docSnapshot)
+    } else { return noItem }
 }
 
 
 export const getCategories = async () => {
-const cat = await getDocs(collection(db, "categories"))
-return cat.docs.map(mapCat)}
-// [{ name: 'pelicula', text: 'Pelicula' }, { name: 'camara', text: "Cámaras" }, { name: 'servicio', text: 'Servicios' }]
+    const cat = await getDocs(collection(db, "categories"))
+    return cat.docs.map(mapCat)
+}
+
 
 
 
