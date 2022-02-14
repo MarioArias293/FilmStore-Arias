@@ -9,6 +9,7 @@ const Item = ({ item }) => {
     const cardStyle =
     {
         width: '18rem',
+        
     }
 
 
@@ -18,8 +19,8 @@ const Item = ({ item }) => {
             <ListGroup variant="flush">
                 <Card.Body>
                     <Card.Title>{title} </Card.Title>
-                    <Card.Text> Precio: {peso.format(price)} </Card.Text>
-                    <Link to={`/item/${id}`}><Button variant="secondary"    > Detalles </Button></Link>
+                    <Card.Text> $ {peso.format(price)} </Card.Text>
+                    <Link to={`/item/${id}`}><Button variant="dark"    > Detalles </Button></Link>
                 </Card.Body>
             </ListGroup>
 

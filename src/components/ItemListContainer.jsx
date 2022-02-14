@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getItemsByCat } from "../resources/firebase";
 import { useParams } from "react-router-dom";
 import Loading from "./Loading";
+import Welcome from "./Welcome";
 
 
 
@@ -23,14 +24,13 @@ const ItemListContainer = () => {
     }, [id])
 
     return (
-        
-        <Container>
-            {loading ? <Loading/> : <Row xs={1} md={2} lg={4}  className="g-4 mt-1 mb-1" >
+        <><Welcome  cat={id}  /><Container>
+            {loading ? <Loading /> : <Row xs={1} md={2} lg={4} className="g-4 mt-1 mb-1">
                 <ItemList className="justify-content-center" products={products} />
-            </Row> }    
-            
+            </Row>}
 
-        </Container>
+
+        </Container></>
 
     )
 }

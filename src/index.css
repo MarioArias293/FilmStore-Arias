@@ -36,3 +36,16 @@ background-image: linear-gradient(90deg, #E97B0E 0%, #EA9E0F 100%);
 #borderDetail {
   background-color: rgb(209, 209, 209);
 }
+
+#boxShadow {
+  box-shadow: 0 13px 27px -5px rgba(92, 93, 50, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03)
+}
+
+#cartLines {
+  font-size: 2.5rem;
+   padding-bottom:0.5rem;
+   padding-top:0.5rem;
+   margin-bottom:1rem; border-bottom: 1px solid;
+   border-image: linear-gradient(to right, #E97B0E, #EA9E0F) 1
+
+}

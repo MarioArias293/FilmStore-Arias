@@ -3,8 +3,9 @@ import { createContext, useState } from "react"
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-    const [cartItems, setItems] = useState([])
+    const [cartItems, setCartItems] = useState([])
     const [id, setId] = useState("")
+    const [enoughStock, setEnoughStock] = useState(true)
 
 
     const getCartItemsSize = () => {
@@ -18,26 +19,32 @@ export const CartProvider = ({ children }) => {
     const addItem = (item, qty) => {
         
         if (isInCart(item.id)) {
-            setItems( cartItems.map(cartItem => {
+            setCartItems( cartItems.map(cartItem => {
                 if (cartItem.item.id === item.id && cartItem.item.stock >= ( qty + cartItem.qty) && ( qty +cartItem.qty ) > 0) {
+                    setEnoughStock(true)
                     return { ...cartItem, qty: qty + cartItem.qty}
                 }
                 if (cartItem.item.id === item.id && cartItem.item.stock < ( qty + cartItem.qty)) {
-                    return alert("No hay stock suficiente"), cartItem
+                    setEnoughStock(false)
+                    return cartItem
                     
 
                 } else return cartItem
             }))
         }
-        else { setItems([...cartItems, { item, qty }]) }
+        
+        else {
+         setEnoughStock(true)
+         setCartItems([...cartItems, { item, qty }]) 
+        }
     }
 
     const removeItem = (itemId) => {        
-        setItems(cartItems.filter(i => i.item.id !== itemId))
+        setCartItems(cartItems.filter(i => i.item.id !== itemId))
     }
 
     const clearAll = () => {
-        setItems([])
+        setCartItems([])
     }
 
     const getTotalPrice = () => {
@@ -52,7 +59,7 @@ export const CartProvider = ({ children }) => {
 
 
     return (
-        <CartContext.Provider value={{ items: cartItems, setItems, getCartItemsSize, addItem, removeItem, clearAll, getTotalPrice, getTotalItems, id: id, setId  }}>
+        <CartContext.Provider value={{ items: cartItems, setItems: setCartItems, getCartItemsSize, addItem, removeItem, clearAll, getTotalPrice, getTotalItems, id: id, setId, enoughStock, setEnoughStock  }}>
             {children}
         </CartContext.Provider>
     )

@@ -1,22 +1,16 @@
-import React  from "react";
+import React, { useContext }  from "react";
 import CartWidget from "./CartWidget";
 import { Link, NavLink } from "react-router-dom";
 import { Navbar, Container, Nav } from "react-bootstrap";
-import { getCategories } from "../resources/firebase";
-import { useEffect, useState } from "react";
+import { CategoryContext } from "../context/CategoryContext";
+
+
+
 const NavBar = () => {
-    
-    const [categories, setCategories] = useState([])
-    
-    useEffect(() => {
-        getCategories().then((cat) => {
-        setCategories(cat)
-        })
-        
-    }, [])
-    
+    const { categories } = useContext(CategoryContext)
+
     return (
-        <Navbar bg="dark" variant="dark" expand="lg" sticky="top" w>
+        <Navbar bg="dark" variant="dark" expand="lg" sticky="top" style={{borderBottom: "solid", borderImage: "linear-gradient(to right, #E97B0E, #EA9E0F) 1" }} >
             <Container>
 
                 <Link to={"/"} style={{ textDecoration: 'none' }}><Navbar.Brand > <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"  className="bi bi-film" viewBox="0 0 20 20">
@@ -32,7 +26,7 @@ const NavBar = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        {categories.map((category) => (<NavLink key={category.name} to={`/category/${category.name}`} activeClassName="active" className="nav-link">{category.text}</NavLink>))}
+                        {categories.map((category) => (<NavLink key={category.name} to={`/category/${category.name}`} activeclassname="active" className="nav-link">{category.text}</NavLink>))}
                     </Nav>
                     <CartWidget /> 
                 </Navbar.Collapse>

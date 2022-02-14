@@ -54,13 +54,12 @@ const Cart = () => {
 
         <>
             {getCartItemsSize() ?
-                <Container className=" border rounded mt-4 " style={{ boxShadow: "0 13px 27px -5px rgba(92, 93, 50, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03)" }} >
+                <Container className=" border rounded mt-4 " id="boxShadow">
                     <Row className="justify-content-md-center g-4 ">
                         <Col className="border-end">
-                            <div style={{ fontSize: "2.5rem" }} className="mt-2">Carrito de compras</div>
-                            <hr />
+                            <div  className="mt-2" id="cartLines" >Carrito de compras</div>
                             {items.map((product) =>
-                            (<><Col key={product.item.id} className="d-flex justify-content-center align-items-center" >
+                            (<><Col key={product.item.id} className="d-flex flex-wrap justify-content-center align-items-center" id="cartLines" >
                                 <Col>
                                     <Figure>
                                         <Figure.Image width={120} height={120} alt="171x180" src={product.item.urls[0]} onClick={() => { navigate(`/item/${product.item.id}`) }} style={{ cursor: "pointer" }} />
@@ -68,7 +67,7 @@ const Cart = () => {
 
                                 </Col>
 
-                                <Col onClick={() => { navigate(`/item/${product.item.id}`) }} style={{ fontSize: "1.5rem", cursor: "pointer" }}>
+                                <Col onClick={() => { navigate(`/item/${product.item.id}`) }} style={{fontSize: "1.4rem", cursor: "pointer" }}>
                                     {product.item.title} <br />
                                 </Col>
                                 <Col className="justify-content-end">
@@ -82,11 +81,11 @@ const Cart = () => {
                                     ${Intl.NumberFormat('en-US').format(product.item.price * product.qty)}
                                 </Col>
                                 <Col>
-                                    <Button variant="outline-danger" onClick={() => removeItem(product.item.id)} >Eliminar </Button>
+                                    <Button variant="outline-danger" size="sm" onClick={() => removeItem(product.item.id)} >Eliminar </Button>
 
                                 </Col>
                             </Col>
-                                <hr />
+                                
 
                             </>)
 
@@ -94,14 +93,14 @@ const Cart = () => {
                             <Container className="d-flex justify-content-around mb-3">
 
                                 <Link to={"/"}>
-                                    <Button variant="secondary" >
+                                    <Button variant="dark" >
 
                                         ← Seguir comprando </Button>
                                 </Link>
 
-                                <Button variant="danger" onClick={clearAll} >
+                                <Button variant="outline-danger" onClick={clearAll} >
 
-                                    Vaciar Carrito  <svg width="20" height="20" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-cart-x">
+                                    Vaciar Carrito  <svg width="20" height="20" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-cart-x">
                                         <path d="M7.354 5.646a.5.5 0 1 0-.708.708L7.793 7.5 6.646 8.646a.5.5 0 1 0 .708.708L8.5 8.207l1.146 1.147a.5.5 0 0 0 .708-.708L9.207 7.5l1.147-1.146a.5.5 0 0 0-.708-.708L8.5 6.793 7.354 5.646z" />
                                         <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
                                     </svg> {' '}</Button>
@@ -112,9 +111,9 @@ const Cart = () => {
                             <Col style={{ backgroundColor: '#E5E5E5', }} className=" border rounded d-flex flex-column align-items-center">
 
                                 <div className="mt-2">
-                                    <div style={{ fontSize: "1.4rem", fontWeight: "bolder" }} className="mt-4">Resumen de tu compra</div>
+                                    <div style={{ fontSize: "1.4rem", fontWeight: "bolder", paddingBottom:"0.5rem", paddingTop:"0.5rem" ,marginBottom:"1rem",   borderBottom: "1px solid", borderImage: "linear-gradient(to right, #E97B0E, #EA9E0F) 1"  }} className="mt-4">Resumen de tu compra</div>
 
-                                    <hr />
+                                   
 
                                 </div>
 

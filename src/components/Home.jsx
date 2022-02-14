@@ -8,7 +8,7 @@ const Home = () => (
   <div className="App" >
     <Container className=" "  >
 
-    <Welcome />
+    
     <ItemListContainer />
     </Container>
 
