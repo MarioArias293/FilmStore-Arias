@@ -3,7 +3,7 @@ import * as animationData from '../assets/animations/order.json';
 import { Container, Button } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 
-const OrderCompleted = () => {
+const OrderReview = () => {
   const { id } = useParams();
 
   const defaultOptions = {
@@ -55,4 +55,4 @@ const OrderCompleted = () => {
   );
 };
 
-export default OrderCompleted;
+export default OrderReview;

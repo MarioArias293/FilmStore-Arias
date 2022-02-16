@@ -8,7 +8,7 @@ import NoPage from './components/NoPage';
 import Layout from './components/Layout';
 import ItemListContainer from './components/ItemListContainer';
 import Cart from './components/Cart';
-import OrderCompleted from './components/OrderCompleted';
+import OrderReview from './components/OrderReview';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Route path="/category/:id" element={<ItemListContainer />} />
           <Route path="/item/:id" element={<ItemDetailContainer />} />
           <Route path="/cart" element={<Cart />} />;
-          <Route path="/OrderCompleted/:id" element={<OrderCompleted />} />;
+          <Route path="/OrderReview/:id" element={<OrderReview />} />;
           <Route path="*" element={<NoPage />} />;
         </Route>
       </Routes>

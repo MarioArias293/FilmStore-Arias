@@ -54,7 +54,7 @@ const Cart = () => {
       .then((doc) => {
         setId(doc.id);
         clearAll();
-        navigate(`/orderCompleted/${doc.id}`);
+        navigate(`/OrderReview/${doc.id}`);
       })
       .catch((e) => {});
     addDoc();
