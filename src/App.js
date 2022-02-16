@@ -8,29 +8,23 @@ import NoPage from './components/NoPage';
 import Layout from './components/Layout';
 import ItemListContainer from './components/ItemListContainer';
 import Cart from './components/Cart';
-import OrderCompleted from './components/orderCompleted';
-
+import OrderCompleted from './components/OrderCompleted';
 
 function App() {
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />} >
+        <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />;
-          <Route path="/category/:id" element={<ItemListContainer/>}/>
-          <Route path="/item/:id" element={<ItemDetailContainer/>}/>          
-          <Route path="*"  element={<NoPage />} />;
-          <Route path="/cart" element={<Cart/>}/>;
-          <Route path="/orderCompleted/:id" element={<OrderCompleted/>}/>;
+          <Route path="/category/:id" element={<ItemListContainer />} />
+          <Route path="/item/:id" element={<ItemDetailContainer />} />
+          <Route path="/cart" element={<Cart />} />;
+          <Route path="/OrderCompleted/:id" element={<OrderCompleted />} />;
+          <Route path="*" element={<NoPage />} />;
         </Route>
-
-      </Routes> 
-
+      </Routes>
     </BrowserRouter>
   );
 }
 
-
 export default App;
-

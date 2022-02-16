@@ -42,17 +42,3 @@
   height: 16rem;
   object-fit: cover;
 }
-
-#welcome {
-  transform: scale(1.03);
-  object-fit: cover;
-}
-
-#welcome img {
-  opacity: 0.4;
-}
-
-#welcome .card-img-top {
-  height: 8vw
-}
-
