@@ -9,3 +9,5 @@ Se usa React para la construcción de la interfaz y se aplican métodos como efe
 Se emplea la herramienta de Firestore database de Firebase para el manejo de la base de datos, en donde se aloja y se obtiene la información de los productos además de la creación y almacenamiento de órdenes de compra generadas en la página.
 
 Para las pantallas de carga (loading) y para hacer énfasis en los resultados de las interacciones en la página (added to cart, no stock, empty cart) se importó la dependencia "react-lottie" la cual se encarga de generar el ambiente para las animaciones usadas; También se usa la librería de "react-bootstrap" como base para los estilos de la web.
+
+El E-Commerce esta desplegado en la siguiente direccion: https://filmstore.netlify.app/

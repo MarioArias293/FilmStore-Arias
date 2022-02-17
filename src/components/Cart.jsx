@@ -162,7 +162,11 @@ const Cart = () => {
             </Col>
             <Col md={4} className=" mt-5 mb-5 ">
               <Col
-                style={{ backgroundColor: '#E5E5E5' }}
+                style={{
+                  backgroundColor: '#E5E5E5',
+                  position: 'sticky',
+                  top: '5rem',
+                }}
                 className=" border rounded d-flex flex-column align-items-center"
               >
                 <div className="mt-2">
